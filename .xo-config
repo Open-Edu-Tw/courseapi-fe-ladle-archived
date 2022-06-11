@@ -1,4 +1,0 @@
-{
-  "prettier": true,
-  "extends": "xo-nextjs"
-}

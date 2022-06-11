@@ -31,6 +31,25 @@
     "xo": "^0.50.0"
   },
   "dependencies": {
-    "@swc/helpers": "~0.3.3"
+    "@swc/helpers": "^0.3.17",
+  },
+  "xo": {
+    "extends": "xo-nextjs",
+    "plugins": [
+      "simple-import-sort"
+    ],
+    "prettier": true,
+    "rules": {
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "error"
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "useTabs": true,
+    "tabWidth": 2,
+    "trailingComma": "all",
+    "singleQuote": true,
+    "bracketSpacing": true
   }
 }
