@@ -16,13 +16,21 @@
   "private": true,
   "devDependencies": {
     "@nrwl/cli": "14.2.4",
+    "@nrwl/js": "^14.2.4",
     "@nrwl/nx-cloud": "^14.0.8",
+    "@nrwl/react": "^14.2.4",
     "@nrwl/workspace": "14.2.4",
+    "@swc/cli": "~0.1.55",
+    "@swc/core": "^1.2.173",
     "eslint-config-xo-nextjs": "^4.1.0",
     "nx": "14.2.4",
     "prettier": "^2.6.2",
+    "tslib": "^2.4.0",
     "typescript": "^4.7.2",
     "webpack": "^5.73.0",
     "xo": "^0.50.0"
+  },
+  "dependencies": {
+    "@swc/helpers": "~0.3.3"
   }
 }
