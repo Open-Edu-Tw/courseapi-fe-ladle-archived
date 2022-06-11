@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "components": "libs/components",
+    "icons": "libs/icons",
     "types": "libs/types"
   }
 }

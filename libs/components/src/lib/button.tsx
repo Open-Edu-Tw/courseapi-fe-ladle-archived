@@ -16,7 +16,8 @@ export type ButtonProps = RequireAtLeastOne<
  * CourseAPI 的按鈕組件。
  *
  * @example
- * import { Button, DownloadIcon } from "@courseapi-fe/components";
+ * import { Button } from "@courseapi-fe/components";
+ * import { DownloadIcon } from "@courseapi-fe/icons";
  *
  * <Button size="medium" color="basic" label="登入" />
  * <Button size="medium" color="accent" icon={<DownloadIcon />} />
