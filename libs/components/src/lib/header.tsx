@@ -1,11 +1,15 @@
+import type { Nullify } from '@courseapi-fe/types';
 import { debounce } from 'lodash-es';
+import type { ImageProps } from 'next/image';
 import Image from 'next/image';
 import toeduIcon from 'public/logo.png';
-import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
+import type { ChangeEvent } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { BarsIcon } from './icons.js';
-import { NavbarItems, NavbarItemsProps } from './navbar-items.js';
-import { SearchBar } from './search-bar.js';
+import type { NavbarItemsProps } from './navbar-items.js';
+import { NavbarItems } from './navbar-items.js';
+import { SearchBar, SearchBarVariant } from './search-bar.js';
 
 export enum HeaderStyle {
 	MobileWithSearchBar = 'mobile_with_search_bar',
@@ -19,15 +23,29 @@ export enum HeaderStyle {
 const searchDebounceSeconds = 500;
 
 export type HeaderProps =
-	| HeaderConfig<HeaderStyle.Mobile, true, false, false, true>
-	| HeaderConfig<HeaderStyle.MobileWithSearchBar, true, true, false, true>
-	| HeaderConfig<HeaderStyle.Desktop, false, true, true, false>;
+	| (HpStyle<HeaderStyle.Mobile> &
+			HpSearchIcon &
+			HpNoSearchBar &
+			HpNoNavbarItems &
+			HpMenu)
+	| (HpStyle<HeaderStyle.MobileWithSearchBar> &
+			HpSearchIcon &
+			HpSearchBar &
+			HpNoNavbarItems &
+			HpMenu)
+	| (HpStyle<HeaderStyle.Desktop> &
+			HpNoSearchIcon &
+			HpSearchBar &
+			HpNavbarItems &
+			HpNoMenu);
+
+type HpStyle<S extends HeaderStyle> = { style: S };
 
 type HpSearchIcon = {
 	/**
 	 * 如果使用者按下「搜尋」按鈕，則觸發這個 event。
 	 */
-	onSearchIconPressed?: () => void;
+	onSearchIconPressed: () => void;
 };
 
 type HpSearchBar = {
@@ -37,7 +55,7 @@ type HpSearchBar = {
 	 * 這個請求已經 debounced，亦即只會在使用者停止輸入後才會觸發。
 	 * 所以不需要在外層設定 debounce。
 	 */
-	onSearch?: (keyword: string) => void;
+	onSearch: (keyword: string) => void;
 };
 
 type HpNavbarItems = NavbarItemsProps;
@@ -49,22 +67,38 @@ type HpMenu = {
 	onToggleMenu: () => void;
 };
 
-/**
- * 根據設定
- */
-type HeaderConfig<
-	Style extends HeaderStyle,
-	HasSearchIcon extends boolean,
-	HasSearchBar extends boolean,
-	HasNavbarItems extends boolean,
-	HasMenu extends boolean,
-> = { style: Style } & (HasSearchIcon extends true
-	? HpSearchIcon
-	: { onSearchIconPressed?: undefined }) &
-	(HasSearchBar extends true ? HpSearchBar : { onSearch?: undefined }) &
-	(HasNavbarItems extends true ? HpNavbarItems : { selected?: undefined }) &
-	(HasMenu extends true ? HpMenu : { onToggleMenu?: undefined });
+type HpNoSearchIcon = Nullify<HpSearchIcon>;
+type HpNoSearchBar = Nullify<HpSearchBar>;
+type HpNoNavbarItems = Nullify<HpNavbarItems>;
+type HpNoMenu = Nullify<HpMenu>;
 
+/**
+ * CourseAPI 的 Header 組件。
+ *
+ * - 如果 style 是 `Mobile`，則要 handle 搜尋按鈕按下，以及選單按鈕按下的事件。
+ * - 如果 style 是 `MobileWithSearchBar`，則要 handle 搜尋按鈕按下、使用者搜尋，以及選單按鈕按下的事件。
+ * - 如果 style 是 `Desktop`，則要 handle 使用者搜尋的事件，以及管理目前選擇的導覽列項目。
+ *
+ * @example
+ * import { Header, HeaderStyle } from '@courseapi-fe/components';
+ *
+ * const [currentStyle, setCurrentStyle] = useState<HeaderStyle>(HeaderStyle.Mobile);
+ * const onSearchIconPressed = useCallback(
+ *    () => setCurrentStyle(
+ *      currentStyle === HeaderStyle.Mobile
+ *        ? HeaderStyle.MobileWithSearchBar
+ *        : HeaderStyle.Mobile
+ *    ),
+ *    [currentStyle, setCurrentStyle],
+ * );
+ *
+ * <Header
+ *    style={currentStyle}
+ *    onSearchIconPressed={onSearchIconPressed}
+ *    onSearch={currentStyle === HeaderStyle.MobileWithSearchBar ? onSearch : undefined}
+ *    onToggleMenu={toggleMenu}
+ * />
+ */
 export const Header = ({
 	style,
 	onSearchIconPressed,
@@ -112,7 +146,7 @@ const MobileHeader = ({
 			<HeaderMenu onToggleMenu={onToggleMenu} />
 			<Logo />
 			<SearchBar
-				variant="collapsed"
+				variant={SearchBarVariant.Collapsed}
 				onSearchIconPressed={onSearchIconPressed}
 			/>
 		</div>
@@ -146,7 +180,12 @@ const DesktopHeader = ({ onSearch, selected }: HpSearchBar & HpNavbarItems) => {
 };
 
 const Logo = () => (
-	<Image src={toeduIcon as string} alt="TOEDU" width="100px" height="30px" />
+	<Image
+		src={toeduIcon as ImageProps['src']}
+		alt="TOEDU"
+		width="100px"
+		height="30px"
+	/>
 );
 
 const HeaderMenu = ({ onToggleMenu }: HpMenu) => (
@@ -174,7 +213,8 @@ const InternalExpandedSearchBar = ({
 
 	return (
 		<SearchBar
-			variant="expanded"
+			variant={SearchBarVariant.Expanded}
+			content={content}
 			isFullWidth={isFullWidth}
 			onChange={onChangeEvent}
 		/>

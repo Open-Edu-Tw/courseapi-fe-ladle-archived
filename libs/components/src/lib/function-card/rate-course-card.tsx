@@ -1,4 +1,5 @@
-import { RateSlider, StarScore } from '../rate-slider.js';
+import type { StarScore } from '../rate-slider.js';
+import { RateSlider } from '../rate-slider.js';
 
 export type RateCourseCardProps = {
 	currentScore: number;

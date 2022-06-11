@@ -1,4 +1,5 @@
-import Image, { ImageProps } from 'next/image';
+import type { ImageProps } from 'next/image';
+import Image from 'next/image';
 import React from 'react';
 
 import BarsSvg from './icons-svg/bars.svg';
@@ -21,16 +22,7 @@ const Icon = ({
 	id: string;
 	icon: ImageProps['src'];
 } & IconProps) => {
-	return (
-		<Image
-			unoptimized
-			alt={id}
-			src={icon}
-			width={width}
-			height={height}
-			{...props}
-		/>
-	);
+	return <Image alt={id} src={icon} width={width} height={height} {...props} />;
 };
 
 const createIconComponent = (id: string, icon: ImageProps['src']) =>

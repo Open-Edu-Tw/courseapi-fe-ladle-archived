@@ -1,8 +1,6 @@
 import type { ReactNode } from 'react';
 import type { RequireAtLeastOne } from 'type-fest';
 
-import InvalidParamReceived from '../exceptions/invalid-parameter-received.js';
-
 export type ButtonProps = RequireAtLeastOne<
 	{
 		size?: 'medium' | 'large' | 'xl';
@@ -14,6 +12,16 @@ export type ButtonProps = RequireAtLeastOne<
 > &
 	React.ComponentPropsWithoutRef<'button'>;
 
+/**
+ * CourseAPI 的按鈕組件。
+ *
+ * @example
+ * import { Button, DownloadIcon } from "@courseapi-fe/components";
+ *
+ * <Button size="medium" color="basic" label="登入" />
+ * <Button size="medium" color="accent" icon={<DownloadIcon />} />
+ * <Button size="medium" color="accent" icon={<DownloadIcon />} label="下載" onClick={() => triggerDownload("filename.zip")}/>
+ */
 export const Button = ({
 	size = 'medium',
 	color = 'basic',
@@ -22,18 +30,13 @@ export const Button = ({
 	...props
 }: ButtonProps) => {
 	if (!label && !icon)
-		throw new InvalidParamReceived(
-			'should be at least one of `label` or `icon`.',
-		);
-
-	const colorClass = getColor(color);
-	const sizeClass = getSize(size);
+		throw new TypeError('should be at least one of `label` or `icon`.');
 
 	return (
 		<button
 			type="button"
 			// FIXME:  min-height will be much better.
-			className={`text-primary ${colorClass} ${sizeClass} rounded flex gap-3 items-center justify-items-center h-8`}
+			className={`text-primary ${colorClass[color]} ${sizeClass[size]} rounded flex gap-3 items-center justify-items-center h-8`}
 			{...props}
 		>
 			{icon && <div>{icon}</div>}
@@ -42,31 +45,15 @@ export const Button = ({
 	);
 };
 
-const colorTable = {
+const colorClass = {
 	basic: 'bg-secondary',
 	accent: 'bg-accent-background',
 } as const;
 
-/**
- * Get the background color class according to the `size` property of {@link ButtonProps}.
- *
- * @param color The color of the button.
- * @returns The according CSS class of this color.
- */
-const getColor = (color: keyof typeof colorTable) => colorTable[color];
-
-const sizeTable = {
+const sizeClass = {
 	medium: 'px-5 py-2',
 	large: 'px-10 py-4',
 	xl: 'px-20 py-6 text-xl',
 } as const;
-
-/**
- * Get the class according to the `size` property of {@link ButtonProps}.
- *
- * @param size The size property of {@link ButtonProps}.
- * @returns The according CSS class of this size.
- */
-const getSize = (size: keyof typeof sizeTable) => sizeTable[size];
 
 export default Button;

@@ -1,9 +1,17 @@
+import type { Nullify } from '@courseapi-fe/types';
 import classNames from 'classnames';
 
 import { SearchIcon } from './icons.js';
 
+export enum SearchBarVariant {
+	Collapsed = 'collapsed',
+	Expanded = 'expanded',
+}
+
+export type SbVariantProps<T extends SearchBarVariant> = { variant: T };
+
 export type SbBarProps = {
-	content?: string;
+	content: string;
 	isFullWidth?: boolean;
 
 	/**
@@ -14,32 +22,37 @@ export type SbBarProps = {
 	placeholderText?: string;
 };
 
-export type SearchBarProps = (
-	| {
-			variant: 'collapsed';
-			content?: undefined;
-			isFullWidth?: undefined;
-			placeholderText?: undefined;
-	  }
-	| {
-			variant: 'expanded';
-			content?: string;
-			isFullWidth?: boolean;
-
-			/**
-			 * The placeholder text.
-			 *
-			 * @default "搜尋課程、關鍵字或 Hashtag……"
-			 */
-			placeholderText?: string;
-	  }
-) & {
+export type SbIconProps = {
 	/**
 	 * Trigger when a user pressed the search icon.
 	 */
 	onSearchIconPressed?: () => void;
-} & React.ComponentPropsWithoutRef<'input'>;
+};
 
+export type SearchBarProps =
+	| (SbVariantProps<SearchBarVariant.Collapsed> &
+			Nullify<SbBarProps> &
+			Required<SbIconProps>)
+	| (SbVariantProps<SearchBarVariant.Expanded> &
+			SbBarProps &
+			SbIconProps &
+			React.ComponentPropsWithoutRef<'input'>);
+
+/**
+ * CourseAPI 的搜尋列。
+ *
+ * 有兩個變體：搜尋按鈕 (`collapsed`) 和搜尋列 (`expanded`)。用法見範例。
+ *
+ * @example
+ * import { SearchBar, SearchBarVariant } from '@courseapi-fe/components';
+ *
+ * // 搜尋按鈕，需傳入按下按鈕的事件。
+ * <SearchBar variant={SearchBarVariant.Collapsed} onSearchIconPressed={expandSearchBar}/>
+ *
+ * // 搜尋列，需傳入搜尋列的內容（可以做雙向綁定）。
+ * const [content, setContent] = setState('');
+ * <SearchBar variant={SearchBarVairant.Expanded} content={content} onChange={setContent} />
+ */
 export const SearchBar = ({
 	variant,
 	content,
@@ -53,8 +66,8 @@ export const SearchBar = ({
 			className={classNames(
 				'flex gap-3 py-2 search-bar text-primary bg-secondary rounded text-sm',
 				{
-					'px-3': variant === 'collapsed',
-					'px-5': variant === 'expanded',
+					'px-3': variant === SearchBarVariant.Collapsed,
+					'px-5': variant === SearchBarVariant.Expanded,
 				},
 			)}
 		>
@@ -68,7 +81,7 @@ export const SearchBar = ({
 			>
 				<SearchIcon />
 			</button>
-			{variant === 'expanded' && placeholderText && (
+			{variant === SearchBarVariant.Expanded && placeholderText && (
 				<input
 					spellCheck
 					className={classNames('bg-transparent focus:outline-none min-w-max', {

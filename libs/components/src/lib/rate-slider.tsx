@@ -9,7 +9,7 @@ export type OnOperated = (operateAt: StarScore) => void;
 export type RateSliderProps =
 	| {
 			onMouseOver?: OnOperated;
-			onClick?: OnOperated;
+			onClick: OnOperated;
 			disabled?: false;
 	  }
 	| {
@@ -18,6 +18,22 @@ export type RateSliderProps =
 			disabled: true;
 	  };
 
+/**
+ * CourseAPI 的評價滑動選擇器。
+ *
+ * 它會動態在滑動時即時顯示目前選取的星星，
+ * 以及在點擊時記錄目前選取的星星。
+ *
+ * @example
+ * import { RateSlider } from "@courseapi-fe/components";
+ *
+ * // 使用者點選星星時，會觸發 `onClick` 事件。以本 callback 為例，則是顯示目前的星星。
+ * // 另外也可以選擇性加上 `onMouseOver` 事件的監聽。這個事件舉例來說，可以讓您以文字化的形式顯示目前選擇的星星。
+ * <RateSlider onClick={(star) => console.log(star)} />
+ *
+ * // disabled 為 true 時，就不會接收任何事件。
+ * <RateSlider disabled />
+ */
 export const RateSlider = ({
 	// eslint-disable-next-line react/prop-types
 	onMouseOver,
