@@ -21,7 +21,7 @@
  * 詳細資訊可以見 docs 文件了解相關理念。
  */
 export type Nullify<T> = {
-  [P in keyof T]?: undefined;
+	[P in keyof T]?: undefined;
 };
 
 export default Nullify;

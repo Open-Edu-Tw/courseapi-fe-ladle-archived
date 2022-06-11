@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@courseapi-fe/components": ["libs/components/src/index.ts"],
       "@courseapi-fe/types": ["libs/types/src/index.ts"]
     }
   },
