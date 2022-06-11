@@ -15,7 +15,7 @@
 點一下下方的按鈕即可直接開啟。這個 Gitpod 內含 VS Code、開發常用的 extensions，
 以及預先配置好且已經安裝依賴的 Node.js 及 PNPM 環境：
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/pan93412/courseapi-fe)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Open-Edu-Tw/courseapi-fe)
 
 ### 在本機環境開始開發
 
