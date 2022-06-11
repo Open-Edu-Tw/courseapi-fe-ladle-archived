@@ -1,94 +1,51 @@
+# CourseAPI 前端
 
+![Licensed under GPL-3.0-or-later](https://img.shields.io/github/license/Open-Edu-Tw/courseapi-fe)
+[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
 
-# CourseapiFe
+> 由於仍在早期開發階段，目前的內容較為零散。
 
-This project was generated using [Nx](https://nx.dev).
+## 開始開發 CourseAPI
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+您可以選擇在 Gitpod 直接使用定義好的環境，無設定開始開發 CourseAPI；
+您亦可可以根據下方的說明，在本機環境配置 CourseAPI 的開發環境。
 
-🔎 **Smart, Fast and Extensible Build System**
+### 在 Gitpod 開啟這個專案
 
-## Adding capabilities to your workspace
+點一下下方的按鈕即可直接開啟。這個 Gitpod 內含 VS Code、開發常用的 extensions，
+以及預先配置好且已經安裝依賴的 Node.js 及 PNPM 環境：
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/pan93412/courseapi-fe)
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+### 在本機環境開始開發
 
-Below are our core plugins:
+**TL;DR:** 安裝 Node.js v16 版本，配置 corepack (`corepack enable`) 然後安裝依賴 (`pnpm install`)。
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+目前開發使用的 Node.js 版本為 `v16.15.0`，但應該 `v16` 全系列都可以進行開發。
+您可以使用 [`nvm`](https://github.com/nvm-sh/nvm) 等工具安裝 Node v16：
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+```bash
+nvm install 16
+nvm use 16
+```
 
-## Generate an application
+> 如果是 Windows 的話，直接到 [Node.js 的官網](https://nodejs.org/en/) 下載 v16 安裝也行。
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
+接下來，請 **fork** 後 clone 這個 repo。您可以點選 GitHub 專案首頁的 “Code” 按鈕，
+找到這個專案的 clone 連結。fork 和 clone 部分不多贅述，可參考網路文章進行操作。
 
-> You can use any of the plugins above to generate applications as well.
+接著，您會需要安裝依賴管理工具。我們使用 `corepack` 管理依賴管理工具的版本。
+首先，進到專案的根目錄，然後輸入：
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+```bash
+# 一定要進到專案的根目錄！
+corepack enable
+```
 
-## Generate a library
+啟用 `corepack`，接著即可開始安裝依賴（本專案使用 PNPM 管理）：
 
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
+```bash
+pnpm i
+```
 
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@courseapi-fe/mylib`.
-
-## Development server
-
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `nx e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+使用 VS Code 或其他文字編輯器或 IDE，即可開始貢獻及開發本專案。
