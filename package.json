@@ -1,19 +1,28 @@
 {
   "name": "courseapi-fe",
   "version": "0.0.0",
-  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@7.2.0",
+  "engines": {
+    "node": "^16"
+  },
+  "license": "GPL-3.0-or-later",
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "lint": "xo"
   },
   "private": true,
   "devDependencies": {
     "@nrwl/cli": "14.2.4",
     "@nrwl/nx-cloud": "^14.0.8",
     "@nrwl/workspace": "14.2.4",
+    "eslint-config-xo-nextjs": "^4.1.0",
     "nx": "14.2.4",
     "prettier": "^2.6.2",
-    "typescript": "~4.7.2"
+    "typescript": "^4.7.2",
+    "webpack": "^5.73.0",
+    "xo": "^0.50.0"
   }
 }
