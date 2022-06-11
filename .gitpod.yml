@@ -1,0 +1,43 @@
+tasks:
+  - name: Initiate dependencies
+    before: |
+      # Read and install the package manager from `package.json`
+      corepack enable
+    init: |
+      # Install dependencies
+      pnpm i
+
+      # Sync done.
+      gp sync-done init
+vscode:
+  extensions: [
+      # Monorepo utilities
+      "nrwl.angular-console",
+
+      # Linter
+      "esbenp.prettier-vscode",
+      "samverschueren.linter-xo",
+
+      # Git
+      "eamodio.gitlens",
+      "mhutchie.git-graph",
+      "donjayamanne.githistory",
+
+      # HTML & CSS
+      "ecmel.vscode-html-css",
+      "andrewmcodes.tailwindcss-extension-pack",
+      "syler.sass-indented",
+
+      # JS utilities
+      "wix.vscode-import-cost",
+
+      # Markdown
+      "davidanson.vscode-markdownlint",
+
+      # EditorConfig
+      "editorconfig.editorconfig",
+
+      # Pan's development favorites
+      "MS-CEINTL.vscode-language-pack-zh-hant",
+      "felipe.nasc-touchbar",
+    ]
