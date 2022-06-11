@@ -1,7 +1,29 @@
 {
-  "recommendations": [
-    
-    "nrwl.angular-console",
-    "esbenp.prettier-vscode"
-  ]
+	"recommendations": [
+		// Monorepo utilities
+		"nrwl.angular-console",
+
+		// Linter
+		"esbenp.prettier-vscode",
+		"samverschueren.linter-xo",
+
+		// Git
+		"eamodio.gitlens",
+		"mhutchie.git-graph",
+		"donjayamanne.githistory",
+
+		// HTML & CSS
+		"ecmel.vscode-html-css",
+		"andrewmcodes.tailwindcss-extension-pack",
+		"syler.sass-indented",
+
+		// JS utilities
+		"wix.vscode-import-cost",
+
+		// Markdown
+		"davidanson.vscode-markdownlint",
+
+		// EditorConfig
+		"editorconfig.editorconfig"
+	]
 }
