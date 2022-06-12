@@ -5,6 +5,14 @@
 
 > 由於仍在早期開發階段，目前的內容較為零散。
 
+## 專案架構
+
+- apps (App 區，包括各種前端微服務及 mock 後端)
+- libs（放置組件及工具的地方）
+  - components（CourseAPI 的組件）
+  - icons（CourseAPI 用到的圖示）
+  - types（CourseAPI 用到的工具類型）
+
 ## 開始開發 CourseAPI
 
 您可以選擇在 Gitpod 直接使用定義好的環境，無設定開始開發 CourseAPI；
@@ -49,3 +57,18 @@ pnpm i
 ```
 
 使用 VS Code 或其他文字編輯器或 IDE，即可開始貢獻及開發本專案。
+此外，VS Code 會建議 **推薦安裝的延伸模組**，方便您進行程式編寫。
+
+### 配置 Ladle (Storybook)
+
+Ladle 可以讓您清楚看到組件實際顯示的模樣。輸入以下命令即可啟動 Ladle：
+
+```bash
+pnpm nx ladle (專案名稱)
+```
+
+假如想要看 `icons` 的組件，請輸入：
+
+```bash
+pnpm nx ladle icons
+```
