@@ -9,6 +9,16 @@ tasks:
 
       # Sync done.
       gp sync-done init
+ports:
+  # Next.js app
+  - port: 3000
+
+  # Ladle
+  - port: 61000
+
+  # HMR reload
+  - port: 24678
+    onOpen: ignore
 vscode:
   extensions: [
       # Monorepo utilities
