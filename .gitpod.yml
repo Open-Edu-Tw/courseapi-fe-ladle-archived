@@ -3,6 +3,8 @@ tasks:
     before: |
       # Read and install the package manager from `package.json`
       corepack enable
+  - name: Start Nx daemon
+    command: pnpm nx daemon
     init: |
       # Install dependencies
       pnpm i
