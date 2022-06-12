@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 import Link from 'next/link';
+import React from 'react';
 
-import type Header from './header.js';
+import Header from './header.js';
 
 /**
  * The available navbar item.
@@ -51,7 +52,7 @@ export type NavbarItemsProps = {
  * // 選取「個人推薦」(Recommends) 項目。
  * <NavbarItems selected={NavbarEntry.Recommended} />
  */
-export const NavbarItems = (props: NavbarItemsProps) => {
+export function NavbarItems(props: NavbarItemsProps) {
 	return (
 		<section className="flex items-center gap-5 navbar-items">
 			{Object.values(NavbarEntry).map((item) => {
@@ -83,6 +84,6 @@ export const NavbarItems = (props: NavbarItemsProps) => {
 			})}
 		</section>
 	);
-};
+}
 
 export default NavbarItems;

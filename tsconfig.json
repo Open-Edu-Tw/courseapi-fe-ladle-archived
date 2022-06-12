@@ -2,7 +2,6 @@
 	"references": [
 		{ "path": "./libs/components" },
 		{ "path": "./libs/icons" },
-		{ "path": "./.storybook" },
 		{ "path": "./libs/types" }
 	]
 }

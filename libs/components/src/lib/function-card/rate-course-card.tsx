@@ -1,3 +1,5 @@
+import React from 'react';
+
 import type { StarScore } from '../rate-slider.js';
 import { RateSlider } from '../rate-slider.js';
 
@@ -6,10 +8,7 @@ export type RateCourseCardProps = {
 	onRated: (score: StarScore) => void;
 };
 
-export const RateCourseCard = ({
-	currentScore,
-	onRated,
-}: RateCourseCardProps) => {
+export function RateCourseCard({ currentScore, onRated }: RateCourseCardProps) {
 	return (
 		<section className="space-y-2 rate-course-card">
 			<h2 className="pb-1 text-xl font-bold">課程評分</h2>
@@ -17,6 +16,6 @@ export const RateCourseCard = ({
 			<RateSlider onClick={onRated} />
 		</section>
 	);
-};
+}
 
 export default RateCourseCard;

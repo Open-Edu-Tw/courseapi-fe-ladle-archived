@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import React from 'react';
 import type { RequireAtLeastOne } from 'type-fest';
 
 export type ButtonProps = RequireAtLeastOne<
@@ -23,13 +24,13 @@ export type ButtonProps = RequireAtLeastOne<
  * <Button size="medium" color="accent" icon={<DownloadIcon />} />
  * <Button size="medium" color="accent" icon={<DownloadIcon />} label="下載" onClick={() => triggerDownload("filename.zip")}/>
  */
-export const Button = ({
+export function Button({
 	size = 'medium',
 	color = 'basic',
 	label,
 	icon,
 	...props
-}: ButtonProps) => {
+}: ButtonProps) {
 	if (!label && !icon)
 		throw new TypeError('should be at least one of `label` or `icon`.');
 
@@ -44,7 +45,7 @@ export const Button = ({
 			{label && <div>{label}</div>}
 		</button>
 	);
-};
+}
 
 const colorClass = {
 	basic: 'bg-secondary',

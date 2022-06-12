@@ -1,6 +1,26 @@
 {
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/icons/src",
-  "projectType": "library",
-  "tags": []
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"sourceRoot": "libs/icons/src",
+	"projectType": "library",
+	"tags": [],
+	"targets": {
+		"ladle": {
+			"executor": "nx:run-commands",
+			"outputs": [],
+			"options": {
+				"command": "ladle serve",
+				"cwd": "libs/icons"
+			}
+		},
+		"build-ladle": {
+			"executor": "nx:run-commands",
+			"outputs": [
+				"dist/ladle/icons"
+			],
+			"options": {
+				"command": "ladle build -o dist/ladle/icons",
+				"cwd": "libs/icons"
+			}
+		}
+	}
 }

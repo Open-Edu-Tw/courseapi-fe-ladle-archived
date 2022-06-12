@@ -1,12 +1,12 @@
+import { BarsIcon } from '@courseapi-fe/icons';
 import type { Nullify } from '@courseapi-fe/types';
 import { debounce } from 'lodash-es';
 import type { ImageProps } from 'next/image';
 import Image from 'next/image';
 import toeduIcon from 'public/logo.png';
 import type { ChangeEvent } from 'react';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { BarsIcon } from './icons.js';
 import type { NavbarItemsProps } from './navbar-items.js';
 import { NavbarItems } from './navbar-items.js';
 import { SearchBar, SearchBarVariant } from './search-bar.js';
@@ -99,13 +99,13 @@ type HpNoMenu = Nullify<HpMenu>;
  *    onToggleMenu={toggleMenu}
  * />
  */
-export const Header = ({
+export function Header({
 	style,
 	onSearchIconPressed,
 	onSearch,
 	selected,
 	onToggleMenu,
-}: HeaderProps) => {
+}: HeaderProps) {
 	const InnerHeader = useCallback(() => {
 		switch (style) {
 			case HeaderStyle.Desktop:
@@ -135,12 +135,12 @@ export const Header = ({
 			<InnerHeader />
 		</header>
 	);
-};
+}
 
-const MobileHeader = ({
+function MobileHeader({
 	onSearchIconPressed,
 	onToggleMenu,
-}: HpSearchIcon & HpMenu) => {
+}: HpSearchIcon & HpMenu) {
 	return (
 		<div className="flex items-center justify-between w-full h-full">
 			<HeaderMenu onToggleMenu={onToggleMenu} />
@@ -151,13 +151,13 @@ const MobileHeader = ({
 			/>
 		</div>
 	);
-};
+}
 
-const MobileWithSearchBarHeader = ({
+function MobileWithSearchBarHeader({
 	onSearchIconPressed,
 	onSearch,
 	onToggleMenu,
-}: HpSearchBar & HpSearchIcon & HpMenu) => {
+}: HpSearchBar & HpSearchIcon & HpMenu) {
 	return (
 		<div className="flex flex-col w-full h-full gap-3">
 			<MobileHeader
@@ -167,9 +167,9 @@ const MobileWithSearchBarHeader = ({
 			<InternalExpandedSearchBar isFullWidth onSearch={onSearch} />
 		</div>
 	);
-};
+}
 
-const DesktopHeader = ({ onSearch, selected }: HpSearchBar & HpNavbarItems) => {
+function DesktopHeader({ onSearch, selected }: HpSearchBar & HpNavbarItems) {
 	return (
 		<div className="flex items-center justify-between w-full h-full">
 			<Logo />
@@ -177,27 +177,31 @@ const DesktopHeader = ({ onSearch, selected }: HpSearchBar & HpNavbarItems) => {
 			<InternalExpandedSearchBar isFullWidth={false} onSearch={onSearch} />
 		</div>
 	);
-};
+}
 
-const Logo = () => (
-	<Image
-		src={toeduIcon as ImageProps['src']}
-		alt="TOEDU"
-		width="100px"
-		height="30px"
-	/>
-);
+function Logo() {
+	return (
+		<Image
+			src={toeduIcon as ImageProps['src']}
+			alt="TOEDU"
+			width="100px"
+			height="30px"
+		/>
+	);
+}
 
-const HeaderMenu = ({ onToggleMenu }: HpMenu) => (
-	<button type="button" onClick={onToggleMenu}>
-		<BarsIcon />
-	</button>
-);
+function HeaderMenu({ onToggleMenu }: HpMenu) {
+	return (
+		<button type="button" onClick={onToggleMenu}>
+			<BarsIcon />
+		</button>
+	);
+}
 
-const InternalExpandedSearchBar = ({
+function InternalExpandedSearchBar({
 	onSearch,
 	isFullWidth,
-}: HpSearchBar & { isFullWidth: boolean }) => {
+}: HpSearchBar & { isFullWidth: boolean }) {
 	const [content, setContent] = useState('');
 	const onChangeEvent = useMemo(
 		() =>
@@ -219,6 +223,6 @@ const InternalExpandedSearchBar = ({
 			onChange={onChangeEvent}
 		/>
 	);
-};
+}
 
 export default Header;

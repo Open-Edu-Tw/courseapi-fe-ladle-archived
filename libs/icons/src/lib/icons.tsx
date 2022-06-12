@@ -11,21 +11,53 @@ import ShareSvg from './icons-svg/share.svg';
 import StrokeStarSvg from './icons-svg/stroke-star.svg';
 import TVSvg from './icons-svg/tv.svg';
 
-export type IconProps = Partial<ImageProps>;
-const Icon = ({
+export type IconNextModeProps = ImageProps;
+export type IconImgModeProps = React.ComponentPropsWithoutRef<'img'>;
+
+export type IconProps =
+	| ({ mode?: 'img' | undefined } & IconImgModeProps)
+	| ({ mode: 'next' } & IconNextModeProps);
+
+function Icon({
 	id,
 	icon,
+	mode,
 	width = '14px',
 	height = '14px',
 	...props
 }: {
 	id: string;
-	icon: ImageProps['src'];
-} & IconProps) => {
-	return <Image alt={id} src={icon} width={width} height={height} {...props} />;
-};
+	icon: string;
+} & IconProps) {
+	switch (mode) {
+		case 'next': {
+			return (
+				<Image
+					{...(props as IconNextModeProps)}
+					alt={id}
+					width={width}
+					height={height}
+					src={icon}
+				/>
+			);
+		}
 
-const createIconComponent = (id: string, icon: ImageProps['src']) =>
+		default: {
+			// & img
+			return (
+				<img
+					{...(props as IconImgModeProps)}
+					alt={id}
+					width={width}
+					height={height}
+					src={icon}
+				/>
+			);
+		}
+	}
+}
+
+const createIconComponent = (id: string, icon: string) =>
 	React.memo((props?: IconProps) => <Icon id={id} icon={icon} {...props} />);
 
 export const BarsIcon = createIconComponent('bars', BarsSvg);

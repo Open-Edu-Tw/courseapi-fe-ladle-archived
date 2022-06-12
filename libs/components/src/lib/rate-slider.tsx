@@ -1,6 +1,5 @@
+import { FilledStarIcon, StrokeStarIcon } from '@courseapi-fe/icons';
 import React, { useCallback, useReducer } from 'react';
-
-import { FilledStarIcon, StrokeStarIcon } from './icons.js';
 
 export type LockFlag = boolean;
 export type StarScore = 1 | 2 | 3 | 4 | 5;
@@ -34,14 +33,14 @@ export type RateSliderProps =
  * // disabled 為 true 時，就不會接收任何事件。
  * <RateSlider disabled />
  */
-export const RateSlider = ({
+export function RateSlider({
 	// eslint-disable-next-line react/prop-types
 	onMouseOver,
 	// eslint-disable-next-line react/prop-types
 	onClick,
 	// eslint-disable-next-line react/prop-types
 	disabled,
-}: RateSliderProps) => {
+}: RateSliderProps) {
 	const memoedStarReducer = useCallback(starReducer, []);
 	const [starState, starDispatcher] = useReducer(memoedStarReducer, {
 		displayStar: 0,
@@ -110,7 +109,7 @@ export const RateSlider = ({
 			<ActableStarIconFactory starOfThis={5} />
 		</div>
 	);
-};
+}
 
 /**
  * 要向 Reducer 執行的動作。
@@ -181,13 +180,13 @@ type ActableStarIconProps<CurrentStar extends StarScore = StarScore> = {
 	currentDisplayStar: 0 | StarScore;
 };
 
-const ActableStarIcon = <C extends StarScore>({
+function ActableStarIcon<C extends StarScore>({
 	onMouseOver,
 	onMouseOut,
 	onClick,
 	starOfThis,
 	currentDisplayStar,
-}: ActableStarIconProps<C>) => {
+}: ActableStarIconProps<C>) {
 	return (
 		<button
 			type="button"
@@ -203,14 +202,16 @@ const ActableStarIcon = <C extends StarScore>({
 			<MemoedStarIcon enabled={currentDisplayStar >= starOfThis} />
 		</button>
 	);
-};
+}
 
-const StarIcon = ({ enabled }: { enabled: boolean }) =>
-	enabled ? (
+function StarIcon({ enabled }: { enabled: boolean }) {
+	return enabled ? (
 		<FilledStarIcon width="20px" height="20px" />
 	) : (
 		<StrokeStarIcon width="20px" height="20px" />
 	);
+}
+
 const MemoedStarIcon = React.memo(StarIcon);
 
 export default React.memo(RateSlider);

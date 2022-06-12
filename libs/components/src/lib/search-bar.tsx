@@ -1,7 +1,7 @@
+import { SearchIcon } from '@courseapi-fe/icons';
 import type { Nullify } from '@courseapi-fe/types';
 import classNames from 'classnames';
-
-import { SearchIcon } from './icons.js';
+import React from 'react';
 
 export enum SearchBarVariant {
 	Collapsed = 'collapsed',
@@ -53,14 +53,14 @@ export type SearchBarProps =
  * const [content, setContent] = setState('');
  * <SearchBar variant={SearchBarVairant.Expanded} content={content} onChange={setContent} />
  */
-export const SearchBar = ({
+export function SearchBar({
 	variant,
 	content,
 	placeholderText = '搜尋課程、關鍵字或 Hashtag……',
 	onSearchIconPressed,
 	isFullWidth,
 	...inputProps
-}: SearchBarProps) => {
+}: SearchBarProps) {
 	return (
 		<section
 			className={classNames(
@@ -104,4 +104,4 @@ export const SearchBar = ({
 			)}
 		</section>
 	);
-};
+}
