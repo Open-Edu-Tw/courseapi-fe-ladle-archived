@@ -17,6 +17,7 @@
   - [《建立 CourseAPI 組件的 Story》](./docs/make-component-story.md)
 - Nx (for monorepo)
   - [Nx CLI 的使用教學（英文）](https://nx.dev/using-nx/nx-cli)
+  - 原則上 nx 的命令都要以 `pnpm` 開頭，比如 `pnpm nx build types`。
 
 ## 專案架構
 
