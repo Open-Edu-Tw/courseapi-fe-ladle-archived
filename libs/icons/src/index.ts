@@ -1,1 +1,1 @@
-export * from './lib/icons.js';
+export * from './lib/icons.jsx';
