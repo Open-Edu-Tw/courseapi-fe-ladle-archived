@@ -9,17 +9,17 @@
 			"outputs": [],
 			"options": {
 				"command": "ladle serve",
-				"cwd": "libs/icons"
+				"cwd": "libs/components"
 			}
 		},
 		"build-ladle": {
 			"executor": "nx:run-commands",
 			"outputs": [
-				"dist/ladle/icons"
+				"dist/ladle/components"
 			],
 			"options": {
-				"command": "ladle build -o dist/ladle/icons",
-				"cwd": "libs/icons"
+				"command": "ladle build -o dist/ladle/components",
+				"cwd": "libs/components"
 			}
 		}
 	}
