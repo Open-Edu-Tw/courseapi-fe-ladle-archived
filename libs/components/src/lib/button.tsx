@@ -22,7 +22,7 @@ export type ButtonProps = RequireAtLeastOne<
  *
  * <Button size="medium" color="basic" label="登入" />
  * <Button size="medium" color="accent" icon={<DownloadIcon />} />
- * <Button size="medium" color="accent" icon={<DownloadIcon />} label="下載" onClick={() => triggerDownload("filename.zip")}/>
+ * <Button size="medium" color="accent" icon={<DownloadIcon />} label="下載 filename.zip" onClick={() => triggerDownload("filename.zip")}/>
  */
 export function Button({
 	size = 'medium',
