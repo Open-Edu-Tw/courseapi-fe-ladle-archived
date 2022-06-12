@@ -1,14 +1,19 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Story } from '@ladle/react';
 import React from 'react';
 
+import type { IconProps } from '../icons.js';
 import { BarsIcon } from '../icons.js';
 
-const config: ComponentMeta<typeof BarsIcon> = {
-	component: BarsIcon,
-};
-export default config;
-
 // eslint-disable-next-line react/function-component-definition
-export const Default: ComponentStory<typeof BarsIcon> = (props) => (
-	<BarsIcon {...props} />
-);
+export const Default: Story<IconProps> = (props) => <BarsIcon {...props} />;
+Default.args = {
+	width: '14px',
+	height: '14px',
+};
+Default.argTypes = {
+	mode: {
+		options: ['img', 'next'],
+		control: { type: 'radio' },
+		defaultValue: 'img',
+	},
+};
