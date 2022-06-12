@@ -1,3 +1,5 @@
+import './style/tailwind.css';
+
 export * from './lib/button.jsx';
 export * from './lib/function-card/rate-course-card.jsx';
 export * from './lib/header.jsx';
