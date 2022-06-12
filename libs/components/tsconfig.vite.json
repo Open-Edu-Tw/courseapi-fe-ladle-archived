@@ -1,0 +1,10 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"composite": true,
+		"declaration": true,
+		"allowJs": true,
+		"checkJs": true
+	},
+	"files": ["vite.config.js", "../../vite.config.js"]
+}
