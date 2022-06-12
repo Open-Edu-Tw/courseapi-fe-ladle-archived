@@ -5,6 +5,19 @@
 
 > 由於仍在早期開發階段，目前的內容較為零散。
 
+## Tech Stack
+
+這個專案使用了以下 Tech Stacks。
+部分比較特別的 Tech Stack 會附上文件說明寫法：
+
+- TypeScript
+- React
+- Tailwind CSS
+- Ladle (Storybook)
+  - [《建立 CourseAPI 組件的 Story》](./docs/make-component-story.md)
+- Nx (for monorepo)
+  - [Nx CLI 的使用教學（英文）](https://nx.dev/using-nx/nx-cli)
+
 ## 專案架構
 
 - apps (App 區，包括各種前端微服務及 mock 後端)
