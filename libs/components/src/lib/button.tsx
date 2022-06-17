@@ -48,8 +48,8 @@ export function Button({
 }
 
 const colorClass = {
-	basic: 'bg-secondary',
-	accent: 'bg-accent-background',
+	basic: 'bg-slate-200 dark:bg-slate-700',
+	accent: 'bg-blue-200 dark:bg-sky-700',
 } as const;
 
 const sizeClass = {
