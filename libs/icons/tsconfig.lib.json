@@ -12,6 +12,9 @@
 	],
 	"exclude": [
 		"jest.config.ts",
+		"vite.config.js",
+		"postcss.config.cjs",
+		"tailwind.config.cjs",
 		"**/*.spec.ts",
 		"**/*.test.ts",
 		"**/*.spec.tsx",

@@ -11,6 +11,9 @@
 		"../../node_modules/@nrwl/react/typings/image.d.ts"
 	],
 	"exclude": [
+		"vite.config.js",
+		"postcss.config.cjs",
+		"tailwind.config.cjs",
 		"jest.config.ts",
 		"**/*.spec.ts",
 		"**/*.test.ts",
