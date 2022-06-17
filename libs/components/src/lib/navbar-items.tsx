@@ -2,8 +2,6 @@ import classNames from 'classnames';
 import Link from 'next/link';
 import React from 'react';
 
-import Header from './header.js';
-
 /**
  * The available navbar item.
  *
