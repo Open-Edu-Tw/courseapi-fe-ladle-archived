@@ -1,4 +1,4 @@
-import { BarsIcon } from '@courseapi-fe/icons';
+import { MenuIcon } from '@courseapi-fe/icons';
 import type { Nullify } from '@courseapi-fe/types';
 import { debounce } from 'lodash-es';
 import type { ImageProps } from 'next/image';
@@ -193,7 +193,7 @@ function Logo() {
 function HeaderMenu({ onToggleMenu }: HpMenu) {
 	return (
 		<button type="button" onClick={onToggleMenu}>
-			<BarsIcon />
+			<MenuIcon />
 		</button>
 	);
 }
