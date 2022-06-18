@@ -7,9 +7,9 @@ import toeduIcon from 'public/logo.png';
 import type { ChangeEvent } from 'react';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
-import type { NavbarItemsProps } from './navbar-items.jsx';
-import { NavbarItems } from './navbar-items.jsx';
-import { SearchBar, SearchBarVariant } from './search-bar.jsx';
+import type { NavbarItemsProps } from './navbar-items';
+import { NavbarItems } from './navbar-items';
+import { SearchBar, SearchBarVariant } from './search-bar';
 
 export enum HeaderStyle {
 	MobileWithSearchBar = 'mobile_with_search_bar',

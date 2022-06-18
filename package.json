@@ -77,13 +77,15 @@
 			{
 				"files": [
 					"libs/components/**/*.tsx",
-					"libs/icons/**/*.tsx"
+					"libs/icons/**/*.tsx",
+					"apps/app/**/*.tsx"
 				],
 				"extends": "xo-react",
 				"rules": {
 					"@typescript-eslint/consistent-type-imports": "warn",
 					"import/no-extraneous-dependencies": "off",
-					"react/require-default-props": "off"
+					"react/require-default-props": "off",
+					"import/extensions": "off"
 				}
 			}
 		]

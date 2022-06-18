@@ -1,8 +1,8 @@
 import type { Story } from '@ladle/react';
 import React from 'react';
 
-import type { ButtonProps } from './button.jsx';
-import { Button } from './button.jsx';
+import type { ButtonProps } from './button';
+import { Button } from './button';
 
 function PlaceholdIcon() {
 	return (
