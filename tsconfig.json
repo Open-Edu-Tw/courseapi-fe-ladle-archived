@@ -1,7 +1,0 @@
-{
-	"references": [
-		{ "path": "./libs/components" },
-		{ "path": "./libs/icons" },
-		{ "path": "./libs/types" }
-	]
-}
