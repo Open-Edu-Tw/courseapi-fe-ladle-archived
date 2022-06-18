@@ -1,7 +1,7 @@
 import React from 'react';
 
-import type { StarScore } from '../rate-slider.js';
-import { RateSlider } from '../rate-slider.js';
+import type { StarScore } from '../rate-slider';
+import { RateSlider } from '../rate-slider';
 
 export type RateCourseCardProps = {
 	currentScore: number;

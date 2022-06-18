@@ -32,12 +32,12 @@ icons 的 stories 是特例，因為 icon 都是 export 在同個檔案，
 import type { Story } from '@ladle/react';
 import React from 'react';
 
-import type { ComponentProps } from './[component].js';
-import { Component } from './[component].js';
+import type { ComponentProps } from './[component]';
+import { Component } from './[component]';
 
 // eslint-disable-next-line react/function-component-definition
 export const Default: Story<ComponentProps> = (props) => (
-  <Component {...props} />
+	<Component {...props} />
 );
 Default.args = {};
 Default.argTypes = {};

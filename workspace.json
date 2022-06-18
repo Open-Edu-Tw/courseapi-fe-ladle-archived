@@ -1,9 +1,10 @@
 {
-  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
-  "version": 2,
-  "projects": {
-    "components": "libs/components",
-    "icons": "libs/icons",
-    "types": "libs/types"
-  }
+	"$schema": "./node_modules/nx/schemas/workspace-schema.json",
+	"version": 2,
+	"projects": {
+		"app": "apps/app",
+		"components": "libs/components",
+		"icons": "libs/icons",
+		"types": "libs/types"
+	}
 }

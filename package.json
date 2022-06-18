@@ -18,6 +18,7 @@
 		"@nrwl/cli": "14.2.4",
 		"@nrwl/eslint-plugin-nx": "^14.2.4",
 		"@nrwl/js": "^14.2.4",
+		"@nrwl/next": "^14.3.6",
 		"@nrwl/nx-cloud": "^14.0.8",
 		"@nrwl/react": "^14.2.4",
 		"@nrwl/storybook": "14.2.4",
@@ -48,6 +49,7 @@
 	},
 	"dependencies": {
 		"@ladle/react": "^1.0.1",
+		"@nrwl/next": "14.3.6",
 		"@swc/helpers": "^0.3.17",
 		"autoprefixer": "^10.4.7",
 		"classnames": "^2.3.1",
